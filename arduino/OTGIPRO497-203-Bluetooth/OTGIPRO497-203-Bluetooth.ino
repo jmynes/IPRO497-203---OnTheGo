@@ -1,9 +1,9 @@
-#define ROBOT_NAME "RandomBot"
+#define ROBOT_NAME "OTG"
 
 // If you haven't configured your device before use this
-#define BLUETOOTH_SPEED 9600
+// #define BLUETOOTH_SPEED 9600
 // If you are modifying your existing configuration, use this:
-// #define BLUETOOTH_SPEED 57600
+#define BLUETOOTH_SPEED 57600
 
 #include <SoftwareSerial.h>
 
@@ -48,8 +48,8 @@ void setup()
   mySerial.print("AT+VERSION");
   waitForResponse();
 
-  // Set pin to 0000
-  mySerial.print("AT+PIN0000");
+  // Set pin to 1337
+  mySerial.print("AT+PIN1337");
   waitForResponse();
 
   // Set the name to ROBOT_NAME
