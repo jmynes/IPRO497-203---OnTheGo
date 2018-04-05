@@ -10,6 +10,21 @@ OnTheGo(OTG) - Control Panel for Modular Home
 3. Ludin Castillo
 4. James "Tucker" Arnold  
 
+## Tech Specs
+* Arduino Uno
+  * USB-A Cable
+* Laptop running Antergos Linux/Windows 10
+  * Arduino software
+  * NodeJS
+* JY-MCU Linvor v1.8 Bluetooth Module
+  * 4 pins/wires
+
+### Tech to test
+* LED
+  * Single color (Red, Blue, etc)
+  * RGB
+* More to come...
+
 ## Resources
 1. [JY-MCU Bluetooth code skeleton for Arduino](https://github.com/rwaldron/johnny-five/wiki/Getting-Started-with-Johnny-Five-and-JY-MCU-Bluetooth-Serial-Port-Module)
 2. [Communication over terminal with Arduino/Bluetooth](https://www.tautvidas.com/blog/2015/12/easy-arduino-bluetooth-communication-with-jy-mcu/)
