@@ -10,7 +10,7 @@
 // Swap RX/TX connections on bluetooth chip
 //   Pin 10 --> Bluetooth TX
 //   Pin 11 --> Bluetooth RX
-SoftwareSerial mySerial(10, 11); // RX, TX
+SoftwareSerial bluetoothSerial(10, 11); // RX, TX
 
 
 /*
@@ -37,28 +37,29 @@ void setup()
     ; // wait for serial port to connect. Needed for Leonardo only
   }
   Serial.println("Starting config");
-  mySerial.begin(BLUETOOTH_SPEED);
+  bluetoothSerial.begin(BLUETOOTH_SPEED);
   delay(1000);
 
   // Should respond with OK
-  mySerial.print("AT");
+  bluetoothSerial.print("AT");
   waitForResponse();
 
   // Should respond with its version
-  mySerial.print("AT+VERSION");
+  bluetoothSerial.print("AT+VERSION");
   waitForResponse();
 
   // Set pin to 1337
-  mySerial.print("AT+PIN1337");
+  // Obviously this is not very secure, but this is testing!
+  bluetoothSerial.print("AT+PIN1337");
   waitForResponse();
 
   // Set the name to ROBOT_NAME
-  mySerial.print("AT+NAME");
-  mySerial.print(ROBOT_NAME);
+  bluetoothSerial.print("AT+NAME");
+  bluetoothSerial.print(ROBOT_NAME);
   waitForResponse();
 
   // Set baudrate to 57600
-  mySerial.print("AT+BAUD7");
+  bluetoothSerial.print("AT+BAUD7");
   waitForResponse();
 
   Serial.println("Done!");
@@ -66,10 +67,19 @@ void setup()
 
 void waitForResponse() {
     delay(1000);
-    while (mySerial.available()) {
-      Serial.write(mySerial.read());
+    while (bluetoothSerial.available()) {
+      Serial.write(bluetoothSerial.read());
     }
     Serial.write("\n");
 }
 
-void loop() {}
+void loop() {
+  if (bluetoothSerial.available()) {
+    Serial.write(bluetoothSerial.read());
+  }
+  if (Serial.available()) {
+    bluetoothSerial.write(Serial.read());
+  } 
+
+  //
+}
