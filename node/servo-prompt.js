@@ -1,3 +1,4 @@
+// https://github.com/rwaldron/johnny-five/blob/master/docs/servo-prompt.md
 var five = require("johnny-five");
 var readline = require("readline");
 
