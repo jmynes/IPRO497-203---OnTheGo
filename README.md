@@ -55,7 +55,8 @@ have IDE occupying port)
 * Run node node/board-with-port.js
   * Celebrate as your LED now blinks repeatedly!
 * Run node node/server-prompt.js
-  * Issue a command 0-180 to move the servo to that position
+  * Sets position to 90 by default. Issue a command 0-180 to move 
+the servo to that position
     * Slight jitter, works better on 5v despite higher jitter
       * [StackOverflow 
 suggestions](https://electronics.stackexchange.com/questions/77502/is-there-a-way-to-stop-servos-from-shaking)
