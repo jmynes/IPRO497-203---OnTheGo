@@ -11,13 +11,14 @@ OnTheGo(OTG) - Control Panel for Modular Home
 4. James "Tucker" Arnold  
 
 ## Tech Specs
-* Arduino Uno
+* 1x Arduino Uno
   * USB-A Cable
 * Laptop running Antergos Linux/Windows 10
   * Arduino software
   * NodeJS
-* JY-MCU Linvor v1.8 Bluetooth Module
+* 1x JY-MCU Linvor v1.8 Bluetooth Module
   * 4 pins/wires
+* 1x Micto Servo 9g - SG90
 
 ### Tech to test
 * LED
@@ -56,6 +57,7 @@ arduino/standardFirmataPlus/standardFirmataPlus.ino to board
 2. [Communication over terminal with Arduino/Bluetooth](https://www.tautvidas.com/blog/2015/12/easy-arduino-bluetooth-communication-with-jy-mcu/)
 3. [JY-MCU part file for Fritzing](https://github.com/RafaGS/Fritzing/blob/master/Bluetooth%20HC-06.fzpz)
 4. [Johnny Five JS Controller for Arduino LED Test](https://github.com/rwaldron/johnny-five/blob/master/docs/board-with-port.md
+  * And more code samples from the same repo
 5. [StandardFirmata 
 Plus](https://github.com/firmata/arduino/blob/master/examples/StandardFirmataPlus/StandardFirmataPlus.ino)
 6. [Arduino IDE](https://www.arduino.cc/en/Main/Software)
