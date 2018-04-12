@@ -8,9 +8,14 @@
 #include <SoftwareSerial.h>
 
 // Swap RX/TX connections on bluetooth chip
+//   Old Fritzing diagram:
 //   Pin 10 --> Bluetooth TX
 //   Pin 11 --> Bluetooth RX
-SoftwareSerial bluetoothSerial(10, 11); // RX, TX
+
+//   Current build
+//   Pin 2 --> Bluetooth TX
+//   Pin 4 --> Bluetooth RX
+SoftwareSerial bluetoothSerial(4, 2); // RX, TX
 
 
 /*
