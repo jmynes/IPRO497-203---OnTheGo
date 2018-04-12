@@ -48,9 +48,16 @@ you're on Windows](https://www.arduino.cc/en/Main/Software)
 one location, if at all
       * Bluetooth Terminal app should be able to send to serial monitor @ 9600 BAUD
   * If successful, upload 
-arduino/standardFirmataPlus/standardFirmataPlus.ino to board
+arduino/standardFirmataPlus/standardFirmataPlus.ino to Arduino board
+
+* Johnny-Five scripts (only one can be running at a time, don't 
+have IDE occupying port)
 * Run node node/board-with-port.js
-* Celebrate as your LED now blinks repeatedly!
+  * Celebrate as your LED now blinks repeatedly!
+* Run node node/server-prompt.js
+  * Issue a command 0-180 to move the servo to that position
+    * Slight jitter, works better on 5v despite higher jitter
+    * Worst jitter at 0, rests ok at 10, 90, 170-180 
 
 ## Resources
 1. [JY-MCU Bluetooth code skeleton for Arduino](https://github.com/rwaldron/johnny-five/wiki/Getting-Started-with-Johnny-Five-and-JY-MCU-Bluetooth-Serial-Port-Module)
