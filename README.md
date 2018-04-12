@@ -57,6 +57,8 @@ have IDE occupying port)
 * Run node node/server-prompt.js
   * Issue a command 0-180 to move the servo to that position
     * Slight jitter, works better on 5v despite higher jitter
+      * [StackOverflow 
+suggestions](https://electronics.stackexchange.com/questions/77502/is-there-a-way-to-stop-servos-from-shaking)
     * Worst jitter at 0, rests ok at 10, 90, 170-180 
 
 ## Resources
