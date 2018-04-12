@@ -19,6 +19,8 @@ OnTheGo(OTG) - Control Panel for Modular Home
 * 1x JY-MCU Linvor v1.8 Bluetooth Module
   * 4 pins/wires
 * 1x Micto Servo 9g - SG90
+  * Ideally this should be externally powered, we have not set that 
+up yet.
 
 ### Tech to test
 * LED
