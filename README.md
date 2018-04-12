@@ -73,3 +73,9 @@ suggestions](https://electronics.stackexchange.com/questions/77502/is-there-a-wa
 5. [StandardFirmata 
 Plus](https://github.com/firmata/arduino/blob/master/examples/StandardFirmataPlus/StandardFirmataPlus.ino)
 6. [Arduino IDE](https://www.arduino.cc/en/Main/Software)
+7. 
+[Blynk 
+Library 
+Download 
+& 
+Install](http://help.blynk.cc/getting-started-library-auth-token-code-examples/how-to-install-blynk-library-for-arduino)
