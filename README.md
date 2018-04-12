@@ -35,9 +35,6 @@ any repo)
 Johnny-Five. For whatever reason, it claims that the Servo.h library
 wasn't found. Instead, [Compile from source, or run the binary exe if
 you're on Windows](https://www.arduino.cc/en/Main/Software)
-    * I've included the most recent build 1.8.5 in the Arduino folder
-    * Text between starting config & done does not reliably show up in any
-one location, if at all
 * From Arduino IDE:
   * Upload
   * Sketch > Include Library > Manage Libraries
@@ -45,6 +42,8 @@ one location, if at all
   * Restart Arduino IDE
   * Upload arduino/OTGIPRO497-203-Bluetooth.ino to Arduino Uno
     * Test connection between JY-MCU Linvor 1.8 Bluetooth Module & Android device
+      * Text between starting config & done does not reliably show up in any
+one location, if at all
       * Bluetooth Terminal app should be able to send to serial monitor @ 9600 BAUD
   * If successful, upload arduino/standardFirmata/standardFirmata.ino to board
 * Run node node/board-with-port.js
