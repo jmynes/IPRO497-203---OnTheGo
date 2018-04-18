@@ -10,3 +10,5 @@ install wifi101
 Hotspot from mobile
 MANUALLY Installed library for blynk and compiled arduino ide not 
 from repo!
+
+Don't forget include Blynk in the readme
