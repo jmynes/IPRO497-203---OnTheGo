@@ -31,6 +31,7 @@
 #include <SPI.h>
 #include <WiFi101.h>
 #include <BlynkSimpleWiFiShield101.h>
+#include <Servo.h>
 
 // You should get Auth Token in the Blynk App.
 // Go to the Project Settings (nut icon).
@@ -41,22 +42,33 @@ char auth[] = "e03b7e93390b467b97a498e1312fa148";
 char ssid[] = "krustyt";
 char pass[] = "krabpizza";
 
+Servo servo;
+
+// Debug menu, hoping for a better solution during presentation because dropdowns suck in Blynk
 BLYNK_WRITE(V0) {
   switch (param.asInt())
   {
-    case 1: // Item 1
-      SerialUSB.println("Rotate right selected");
+    case 1: // Servo Down
+      SerialUSB.println("Servo moved to resting position");
+      servo.attach(10); // Connect Servo pin 10
+      delay(1000);          // Wait a bit
+      servo.write(90);  // Servo rotates to down position (not fully certain why that's 90 in our case...)
+      servo.detach();   // Take a nap, servo. We wouldn't want you to overheat for a model.
       break;
-    case 2: // Item 2
-      SerialUSB.println("Rotate left selected");
+    case 2: // Servo Up
+      SerialUSB.println("Servo moved to standing position");
+      servo.attach(10); // Repeat above but inverse position
+      delay(1000);
+      servo.write(0);
+      servo.detach();
       break;
      case 3: // Item 3
       SerialUSB.println("LED on V1: on");
-      // Find way to turn on pin 7 (D7)
+      digitalWrite(7, HIGH);  // Surprisingly pretty dim, compared to the blynk button pin solution.
       break;
      case 4: // Item 4
       SerialUSB.println("LED on V1: off");
-      // Find way to turn off pin 7 (D7)
+      digitalWrite(7, LOW);
       break;
     default:
       SerialUSB.println("Unknown item selected");
@@ -67,7 +79,7 @@ void setup()
 {
   // Debug console
   SerialUSB.begin(9600);
-
+  //servo.attach(10);
   Blynk.begin(auth, ssid, pass);
   // You can also specify server:
   //Blynk.begin(auth, ssid, pass, "blynk-cloud.com", 8442);
