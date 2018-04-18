@@ -51,14 +51,14 @@ BLYNK_WRITE(V0) {
     case 1: // Servo Down
       SerialUSB.println("Servo moved to resting position");
       servo.attach(10); // Connect Servo pin 10
-      delay(1000);          // Wait a bit
+      delay(100);          // Wait a bit
       servo.write(90);  // Servo rotates to down position (not fully certain why that's 90 in our case...)
       servo.detach();   // Take a nap, servo. We wouldn't want you to overheat for a model.
       break;
     case 2: // Servo Up
       SerialUSB.println("Servo moved to standing position");
       servo.attach(10); // Repeat above but inverse position
-      delay(1000);
+      delay(100);
       servo.write(0);
       servo.detach();
       break;
