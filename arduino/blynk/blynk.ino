@@ -62,11 +62,11 @@ BLYNK_WRITE(V0) {
       servo.write(0);
       servo.detach();
       break;
-     case 3: // Item 3
+     case 3: // LED on
       SerialUSB.println("LED on V1: on");
-      digitalWrite(7, HIGH);  // Surprisingly pretty dim, compared to the blynk button pin solution.
+      digitalWrite(7, HIGH); 
       break;
-     case 4: // Item 4
+     case 4: // LED off
       SerialUSB.println("LED on V1: off");
       digitalWrite(7, LOW);
       break;
@@ -79,11 +79,13 @@ void setup()
 {
   // Debug console
   SerialUSB.begin(9600);
-  //servo.attach(10);
   Blynk.begin(auth, ssid, pass);
   // You can also specify server:
   //Blynk.begin(auth, ssid, pass, "blynk-cloud.com", 8442);
   //Blynk.begin(auth, ssid, pass, IPAddress(192,168,1,100), 8442);
+
+  //servo.attach(10);
+  pinMode(7, OUTPUT);
 }
 
 void loop()
