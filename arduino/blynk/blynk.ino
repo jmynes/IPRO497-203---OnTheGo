@@ -128,14 +128,14 @@ void ledCMD(int pin, int universalOverride)
 }
 
 /*
-   This function has a couple purposes. From Blynk's app, 
-   we have a dropdown menu that if switched to V0, turns
-   this into a full Servo control panel. However, that isn't very good UX.
+ * This function has a couple purposes. From Blynk's app, 
+ * we have a dropdown menu that if switched to V0, turns
+ * this into a full Servo control panel. However, that isn't very good UX.
   
-   We also have a series of NFC tags that interface with this as a 
-   master virtual pin for our Servos. This probably is not the best solution as it 
-   makes it difficult to do multiple tasks, particularly with the delay
-   fix the servos are presently utilizing. We hope to update this soon.
+ * We also have a series of NFC tags that interface with this as a 
+ * master virtual pin for our Servos. This probably is not the best solution as it 
+ * makes it difficult to do multiple tasks, particularly with the delay
+ * fix the servos are presently utilizing. We hope to update this soon.
 */
 BLYNK_WRITE(V0) {  // Servos
   int count = 0;
@@ -151,15 +151,15 @@ BLYNK_WRITE(V0) {  // Servos
 }
 
 /*
-   This function has a couple purposes. From Blynk's app, 
-   we have a dropdown menu that if switched to V1, turns
-   this into a full LED control panel. However, that isn't very good UX.
-  
-   We also have a series of NFC tags that interface with this as a 
-   master virtual pin for our LEDs. There might be a better way to do
-   this, but it is sufficient for our purpose.
+ * This function has a couple purposes. From Blynk's app, 
+ *  we have a dropdown menu that if switched to V1, turns
+ *  this into a full LED control panel. However, that isn't very good UX.
+ * 
+ *  We also have a series of NFC tags that interface with this as a 
+ *  master virtual pin for our LEDs. There might be a better way to do
+ *  this, but it is sufficient for our purpose.
 */
-BLYNK_WRITE(V1) {
+BLYNK_WRITE(V1) {  // LEDS
   switch (param.asInt())
   {
     case 1:
@@ -199,7 +199,6 @@ void setup()
   //Blynk.begin(auth, ssid, pass, "blynk-cloud.com", 8442);
   //Blynk.begin(auth, ssid, pass, IPAddress(192,168,1,100), 8442);
 
-  //servo.attach(10);
   pinMode(7, OUTPUT);
 }
 
