@@ -1,6 +1,4 @@
-# IPRO497-203---OnTheGo
-
-## OnTheGo(OTG) - Control Panel for Modular Home
+# OnTheGo(OTG) - Control Panel for Modular Home
 
 ## Team
 ### Illinois Institute of Technology
