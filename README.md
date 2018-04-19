@@ -46,5 +46,6 @@ suggestions](https://electronics.stackexchange.com/questions/77502/is-there-a-wa
 
 ## Resources
 1. [Communication over terminal with Arduino/Bluetooth](https://www.tautvidas.com/blog/2015/12/easy-arduino-bluetooth-communication-with-jy-mcu/)
-2. [JY-MCU part file for Fritzing](https://github.com/RafaGS/Fritzing/blob/master/Bluetooth%20HC-06.fzpz)
+2. [Arduino MKR 1000 Fritzing Part](http://forum.fritzing.org/uploads/default/original/2X/4/4b1a613c74f767e53dbd82fd8be1ea16f0981033.fzpz)
+  * Or read [this thread](http://forum.fritzing.org/t/mkr1000-fritzing-part/1408/11), we used the version from the final post
 3. [Arduino IDE](https://www.arduino.cc/en/Main/Software)
