@@ -44,27 +44,16 @@ char pass[] = "krabpizza";
 
 Servo servo;
 
-/*
-   This function has a couple purposes. From Blynk's app, 
-   we have a dropdown menu that if switched to V0, turns
-   this into a full control panel. However, that isn't very good UX.
-  
-   We also have a series of NFC tags that interface with this as a 
-   master virtual pin. This probably is not the best solution as it 
-   makes it difficult to do multiple tasks, particularly with the delay
-   fix the servos are presently utilizing. We hope to update this soon.
-
-   Thirdly, from the Blynk app you can control the servo from here for now.
-*/
-
-void servoCMD (int pin, int pos) {
+// Takes a pin
+void servoCMD (int pin) {
   int count = 0;
   Serial.print(pin);
 
   servo.attach(pin);
   int toggle = servo.read();
+  servo.detach();
 
-  if (pos == 90) {  // Servo Down
+  if (toggle == 0) {  // Servo Down
   SerialUSB.println("Servo moved to resting position");
 
   // Band-aid fix to Servo for some reason needing same command twice
@@ -93,6 +82,7 @@ void servoCMD (int pin, int pos) {
   }
 }
 
+// Takes a pin, & Universal On/Off (3 or 4) Override
 void ledCMD(int pin, int universalOverride)
 {
   int toggle = digitalRead(pin);
@@ -108,31 +98,38 @@ void ledCMD(int pin, int universalOverride)
   }
 }
 
+/*
+   This function has a couple purposes. From Blynk's app, 
+   we have a dropdown menu that if switched to V0, turns
+   this into a full Servo control panel. However, that isn't very good UX.
+  
+   We also have a series of NFC tags that interface with this as a 
+   master virtual pin for our Servos. This probably is not the best solution as it 
+   makes it difficult to do multiple tasks, particularly with the delay
+   fix the servos are presently utilizing. We hope to update this soon.
+*/
 BLYNK_WRITE(V0) {  // Servos
   int count = 0;
   switch (param.asInt())
   {
-    case 1: // Servo Up
-      servoCMD(10, 0);
+    case 1: // Servo Pin 10 (#1)
+      servoCMD(10);
       break;
-    case 2: // Servo Down
-      servoCMD(10, 90);
-     break;
-    case 3: // LED on
-      SerialUSB.println("LED on V1: on");
-      digitalWrite(7, HIGH); 
-    break;
-    case 4: // LED off
-      SerialUSB.println("LED on V1: off");
-      digitalWrite(7, LOW);
-    break;
     default:
        SerialUSB.println("Unknown item selected");
     break;
   }
 }
 
-// LED Controller, would be better with get/set for first 4 cases (toggle)
+/*
+   This function has a couple purposes. From Blynk's app, 
+   we have a dropdown menu that if switched to V1, turns
+   this into a full LED control panel. However, that isn't very good UX.
+  
+   We also have a series of NFC tags that interface with this as a 
+   master virtual pin for our LEDs. There might be a better way to do
+   this, but it is sufficient for our purpose.
+*/
 BLYNK_WRITE(V1) {
   switch (param.asInt())
   {
