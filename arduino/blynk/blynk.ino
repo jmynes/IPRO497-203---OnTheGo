@@ -56,47 +56,117 @@ Servo servo;
 
    Thirdly, from the Blynk app you can control the servo from here for now.
 */
-BLYNK_WRITE(V0) {
+
+void servoCMD (int pin, int pos) {
+  int count = 0;
+  Serial.print(pin);
+
+  servo.attach(pin);
+  int toggle = servo.read();
+
+  if (pos == 90) {  // Servo Down
+  SerialUSB.println("Servo moved to resting position");
+
+  // Band-aid fix to Servo for some reason needing same command twice
+  // Even as a bandaid fix, this should really be a function for DRY code.
+    while(count < 2) {
+      servo.attach(pin); // Connect Servo pin 10
+      delay(400);          // Wait a bit
+      servo.write(90);  // Servo rotates to down position (not fully certain why that's 90 in our case...)
+      servo.detach();   // Take a nap, servo. We wouldn't want you to overheat for a model.
+
+      count = count +1;
+    }
+  }
+  else {  // Servo Up
+    SerialUSB.println("Servo moved to standing position");
+
+    // Band-aid fix to Servo for some reason needing same command twice
+    while(count < 2) {   
+      servo.attach(10); // Repeat above but inverse position
+      delay(400);
+      servo.write(0);
+      servo.detach();
+
+      count = count +1;
+    }
+  }
+}
+
+void ledCMD(int pin, int universalOverride)
+{
+  int toggle = digitalRead(pin);
+  Serial.print(pin);
+  
+  if (toggle == 0) {
+    Serial.println(" LED: On");
+    digitalWrite(pin, HIGH);
+  }
+  else {
+    Serial.println(" LED: Off");
+    digitalWrite(pin, LOW);
+  }
+}
+
+BLYNK_WRITE(V0) {  // Servos
   int count = 0;
   switch (param.asInt())
   {
-    case 1: // Servo Down
-      SerialUSB.println("Servo moved to resting position");
-
-       // Band-aid fix to Servo for some reason needing same command twice
-       // Even as a bandaid fix, this should really be a function for DRY code.
-      while(count < 2) {
-        servo.attach(10); // Connect Servo pin 10
-        delay(400);          // Wait a bit
-        servo.write(90);  // Servo rotates to down position (not fully certain why that's 90 in our case...)
-        servo.detach();   // Take a nap, servo. We wouldn't want you to overheat for a model.
-
-        count = count +1;
-      }
+    case 1: // Servo Up
+      servoCMD(10, 0);
       break;
-    case 2: // Servo Up
-      SerialUSB.println("Servo moved to standing position");
-      
-      // Band-aid fix to Servo for some reason needing same command twice
-      while(count < 2) {   
-        servo.attach(10); // Repeat above but inverse position
-        delay(400);
-        servo.write(0);
-        servo.detach();
-
-        count = count +1;
-      }
-      break;
-     case 3: // LED on
+    case 2: // Servo Down
+      servoCMD(10, 90);
+     break;
+    case 3: // LED on
       SerialUSB.println("LED on V1: on");
       digitalWrite(7, HIGH); 
-      break;
-     case 4: // LED off
+    break;
+    case 4: // LED off
       SerialUSB.println("LED on V1: off");
       digitalWrite(7, LOW);
-      break;
+    break;
+    default:
+       SerialUSB.println("Unknown item selected");
+    break;
+  }
+}
+
+// LED Controller, would be better with get/set for first 4 cases (toggle)
+BLYNK_WRITE(V1) {
+  switch (param.asInt())
+  {
+    case 1:
+      //SerialUSB.println("Red LED: on");
+      ledCMD(A1, 0);
+    break;
+    case 2:
+      //SerialUSB.println("Yellow LED: on");
+      ledCMD(A2, 0); 
+    break;
+    case 3:
+      //SerialUSB.println("White LED: on");
+      ledCMD(A3, 0);
+    break;
+    case 4:
+      //SerialUSB.println("Blue LED: on");
+      ledCMD(A4, 0); 
+    break;
+    case 5: // Universal LED On
+      ledCMD(A1, 2);
+      ledCMD(A2, 2);
+      ledCMD(A3, 2);
+      ledCMD(A4, 2);
+    break;
+    case 6: // Universal LED Off
+      ledCMD(A1, 3);
+      ledCMD(A2, 3);
+      ledCMD(A3, 3);
+      ledCMD(A4, 3);  
+    break;
     default:
       SerialUSB.println("Unknown item selected");
+    break;
   }
 }
 
