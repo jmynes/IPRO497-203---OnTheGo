@@ -1,3 +1,7 @@
+# THIS BRANCH IS ABANDONED
+We switched to Wifi, and have revamped the project since. This branch is 
+kept for archival purposes only.
+
 # IPRO497-203---OnTheGo
 OnTheGo(OTG) - Control Panel for Modular Home
 
