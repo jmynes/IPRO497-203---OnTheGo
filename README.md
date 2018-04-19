@@ -62,6 +62,7 @@
     * [StackOverflow
 suggestions](https://electronics.stackexchange.com/questions/77502/is-there-a-way-to-stop-servos-from-shaking)
     * Worst jitter at 0, rests ok at 10, 90, 170-180
+* We wasted **a lot** of time trying to make this work with Bluetooth. In the interest of that time spent, the abandoned Bluetooth branch is preserved for archival purposes. 
 
 ## Resources
 1. [Communication over terminal with Arduino/Bluetooth](https://www.tautvidas.com/blog/2015/12/easy-arduino-bluetooth-communication-with-jy-mcu/)
