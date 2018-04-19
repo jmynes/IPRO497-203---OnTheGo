@@ -11,7 +11,7 @@
 
 ## Diagrams and Screenshots
 ![Fritzing Diagram](https://raw.githubusercontent.com/jmynes/IPRO497-203---OnTheGo/master/pics-and-screenshots/fritzingDiagram.png)
-![Mobile Screenshot](https://raw.githubusercontent.com/jmynes/IPRO497-203---OnTheGo/master/pics-and-screenshots/mobile.png)
+![Mobile Mockup](https://raw.githubusercontent.com/jmynes/IPRO497-203---OnTheGo/master/pics-and-screenshots/mobile-mockup.png)
 
 ## Tech Specs
 * 1x Arduino MKR 1000 (WiFi Enabled)
