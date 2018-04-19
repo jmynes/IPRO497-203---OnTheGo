@@ -54,22 +54,22 @@ void servoCMD (int pin) {
   int toggle = servo.read();
   servo.detach();
 
-  if (toggle == 0) {  // Servo Down
-  SerialUSB.println("Servo moved to resting position");
+  if (toggle == 0) {  // Servo Up
+  SerialUSB.println("Servo moved to standing position");
 
   // Band-aid fix to Servo for some reason needing same command twice
   // Even as a bandaid fix, this should really be a function for DRY code.
     while(count < 2) {
       servo.attach(pin); // Connect Servo pin 10
       delay(400);          // Wait a bit
-      servo.write(90);  // Servo rotates to down position (not fully certain why that's 90 in our case...)
+      servo.write(130);  // Servo rotates to up position 
       servo.detach();   // Take a nap, servo. We wouldn't want you to overheat for a model.
 
       count = count +1;
     }
   }
-  else {  // Servo Up
-    SerialUSB.println("Servo moved to standing position");
+  else {  // Servo Down
+    SerialUSB.println("Servo moved to resting position");
 
     // Band-aid fix to Servo for some reason needing same command twice
     while(count < 2) {   
