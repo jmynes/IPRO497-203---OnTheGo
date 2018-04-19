@@ -44,23 +44,48 @@ char pass[] = "krabpizza";
 
 Servo servo;
 
-// Debug menu, hoping for a better solution during presentation because dropdowns suck in Blynk
+/*
+   This function has a couple purposes. From Blynk's app, 
+   we have a dropdown menu that if switched to V0, turns
+   this into a full control panel. However, that isn't very good UX.
+  
+   We also have a series of NFC tags that interface with this as a 
+   master virtual pin. This probably is not the best solution as it 
+   makes it difficult to do multiple tasks, particularly with the delay
+   fix the servos are presently utilizing. We hope to update this soon.
+
+   Thirdly, from the Blynk app you can control the servo from here for now.
+*/
 BLYNK_WRITE(V0) {
+  int count = 0;
   switch (param.asInt())
   {
     case 1: // Servo Down
       SerialUSB.println("Servo moved to resting position");
-      servo.attach(10); // Connect Servo pin 10
-      delay(100);          // Wait a bit
-      servo.write(90);  // Servo rotates to down position (not fully certain why that's 90 in our case...)
-      servo.detach();   // Take a nap, servo. We wouldn't want you to overheat for a model.
+
+       // Band-aid fix to Servo for some reason needing same command twice
+       // Even as a bandaid fix, this should really be a function for DRY code.
+      while(count < 2) {
+        servo.attach(10); // Connect Servo pin 10
+        delay(400);          // Wait a bit
+        servo.write(90);  // Servo rotates to down position (not fully certain why that's 90 in our case...)
+        servo.detach();   // Take a nap, servo. We wouldn't want you to overheat for a model.
+
+        count = count +1;
+      }
       break;
     case 2: // Servo Up
       SerialUSB.println("Servo moved to standing position");
-      servo.attach(10); // Repeat above but inverse position
-      delay(100);
-      servo.write(0);
-      servo.detach();
+      
+      // Band-aid fix to Servo for some reason needing same command twice
+      while(count < 2) {   
+        servo.attach(10); // Repeat above but inverse position
+        delay(400);
+        servo.write(0);
+        servo.detach();
+
+        count = count +1;
+      }
       break;
      case 3: // LED on
       SerialUSB.println("LED on V1: on");
