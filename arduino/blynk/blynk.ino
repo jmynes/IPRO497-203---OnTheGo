@@ -43,6 +43,7 @@ char ssid[] = "krustyt";
 char pass[] = "krabpizza";
 
 Servo servo;
+int ledCount = 4;
 
 // Takes a pin
 void servoCMD (int pin) {
@@ -82,19 +83,47 @@ void servoCMD (int pin) {
   }
 }
 
-// Takes a pin, & Universal On/Off (3 or 4) Override
+/*
+ * Takes a pin, & Universal On/Off (2 or 3) Override for LED control
+ * V99 is used for universal LED commands
+ * 
+ * The int toggle starts at the state (0 or 1) of the called pin.
+ * If the pin is on, the command turns the pin off, and vice versa.
+ */
 void ledCMD(int pin, int universalOverride)
 {
   int toggle = digitalRead(pin);
-  Serial.print(pin);
-  
-  if (toggle == 0) {
-    Serial.println(" LED: On");
-    digitalWrite(pin, HIGH);
+  int count = 0;
+
+  /* 
+   * We used the Analog pins for our LEDs mostly because of wiring space. 
+   * Because of this, it's difficult to iterate over the Analog pins, so here's a
+   * array of A1-A4. I would like to find a different solution to this so I can just
+   * utilize the global variable ledCount.
+   */
+  static const uint8_t analog_pins[] = {A1,A2,A3,A4};
+
+  if (universalOverride == 2) {
+    while (count < ledCount) {
+      digitalWrite(analog_pins[count], HIGH);
+      count = count +1;
+    }
+  }
+  else if (universalOverride == 3) {
+    while (count < ledCount) {
+      digitalWrite(analog_pins[count], LOW);
+      count = count +1;
+    }
   }
   else {
-    Serial.println(" LED: Off");
-    digitalWrite(pin, LOW);
+    if (toggle == 0) {
+      Serial.println(" LED: On");
+      digitalWrite(pin, HIGH);
+    }
+    else {
+      Serial.println(" LED: Off");
+      digitalWrite(pin, LOW);
+    }
   }
 }
 
@@ -150,16 +179,10 @@ BLYNK_WRITE(V1) {
       ledCMD(A4, 0); 
     break;
     case 5: // Universal LED On
-      ledCMD(A1, 2);
-      ledCMD(A2, 2);
-      ledCMD(A3, 2);
-      ledCMD(A4, 2);
+      ledCMD(V99, 2);
     break;
     case 6: // Universal LED Off
-      ledCMD(A1, 3);
-      ledCMD(A2, 3);
-      ledCMD(A3, 3);
-      ledCMD(A4, 3);  
+      ledCMD(V99, 3);
     break;
     default:
       SerialUSB.println("Unknown item selected");
