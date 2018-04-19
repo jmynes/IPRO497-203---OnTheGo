@@ -17,7 +17,7 @@
 * 1x Micro Servo 9g - SG90
   * Ideally this should be externally powered, we have not set that up yet. We could also use the VIN port on the Arduino, but have yet to explore that route fully.
 * LEDs
-* NFC tags
+* [Rewriteable NFC tags](https://www.amazon.com/dp/B00XYVU24G/ref=sspa_dk_detail_6?pd_rd_i=B076B86LWF&pd_rd_wg=joLMI&pd_rd_r=9JGYQP20VXAVRSN1WYPX&pd_rd_w=HmI7w&th=1)
 * Android phone with:
   * [Trigger - Task Launcher](https://play.google.com/store/apps/details?id=com.jwsoft.nfcactionlauncher&hl=en)
   * [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm)
