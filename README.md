@@ -19,10 +19,11 @@
 * LEDs
 * NFC tags
 * Android phone with:
-  * Blynk
-  * Tasker
-    * [RESTask plugin](https://play.google.com/store/apps/details?id=com.freehaha.restask&hl=en)
-  * Trigger
+  * [Trigger - Task Launcher](https://play.google.com/store/apps/details?id=com.jwsoft.nfcactionlauncher&hl=en)
+  * [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm)
+    * [RESTask
+    plugin](https://play.google.com/store/apps/details?id=com.freehaha.restask&hl=en)
+  * [Blynk](https://play.google.com/store/apps/details?id=cc.blynk)
 
 ### Setup
 * git clone
@@ -37,7 +38,25 @@
 * If above steps are all successful, upload arduino/blynk.io
   * If it claims that the Blynk, Servo, or any other library wasn't found, then [compile from source, or run the binary exe if you're on Windows](https://www.arduino.cc/en/Main/Software)
 
-## Script
+### Communication
+* Android phone (in our case, a Gen 1 Google Pixel XL running Android 8.1)
+  * Installed the following apps from the Tech Specs section of this README
+* [This tutorial will show how to trigger a tasker function](https://community.blynk.cc/t/tutorial-blynk-and-tasker/5063)
+  * It's basically a simple API request with a value sent to a digital or
+  virtual pin, interpreted by Blynk (over HTTP, sadly), and the rest is as
+  README follows.
+
+#### Our Stack
+1. If NFC tag is tapped on our display
+  * Trigger runs a related Tasker task
+    * HTTP auth'd RESTful call to Blynk's server, a pin and a parameter
+  * Blynk's server forwards the task to our Arduino over the Internet
+    * Arduino MKR 1000 receives task over WiFi (in our case, using the same Pixel XL's hotspot to get around school network authentication)
+  * Arduino tells LED/Servo(s) to do task
+2. Instead, we can also use a graphical control panel with the Blynk app
+  * Click the digital control labeled for a specific LED/Servo(s)
+
+## Problems
 * Moving servos between 0 and 90 in a binary configuration is surprisingly rough.
   * Slight jitter, works better on 5v despite higher jitter
     * [StackOverflow
