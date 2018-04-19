@@ -69,3 +69,4 @@ suggestions](https://electronics.stackexchange.com/questions/77502/is-there-a-wa
   * Or read [this thread](http://forum.fritzing.org/t/mkr1000-fritzing-part/1408/11), we used the version from the final post
 3. [Arduino IDE](https://www.arduino.cc/en/Main/Software)
 4. [Blynk initial setup code](https://github.com/blynkkk/blynk-library/blob/master/examples/Widgets/LED/LED_Blink/LED_Blink.ino)
+5. [Blynk integration with Tasker](https://community.blynk.cc/t/tutorial-blynk-and-tasker/5063)
