@@ -10,8 +10,8 @@
 4. James "Tucker" Arnold  
 
 ## Diagrams and Screenshots
-![Fritzing Diagram](https://raw.githubusercontent.com/jmynes/IPRO497-203---OnTheGo/master/pics-and-screenshots/fritzingDiagram.png)
-![Mobile Mockup](https://raw.githubusercontent.com/jmynes/IPRO497-203---OnTheGo/master/pics-and-screenshots/mobile-mockup.png)
+![Fritzing Diagram](https://raw.githubusercontent.com/jmynes/IPRO497-203---OnTheGo/master/pics-and-screenshots/fritzing-diagram.png)
+![Mobile Mockup](https://raw.githubusercontent.com/jmynes/IPRO497-203---OnTheGo/master/pics-and-screenshots/mobile-app-mockup.png)
 
 ## Tech Specs
 * 1x Arduino MKR 1000 (WiFi Enabled)
@@ -69,9 +69,8 @@ suggestions](https://electronics.stackexchange.com/questions/77502/is-there-a-wa
 * We wasted **a lot** of time trying to make this work with Bluetooth. In the interest of that time spent, the abandoned Bluetooth branch is preserved for archival purposes.
 
 ## Resources
-1. [Communication over terminal with Arduino/Bluetooth](https://www.tautvidas.com/blog/2015/12/easy-arduino-bluetooth-communication-with-jy-mcu/)
-2. [Arduino MKR 1000 Fritzing Part](http://forum.fritzing.org/uploads/default/original/2X/4/4b1a613c74f767e53dbd82fd8be1ea16f0981033.fzpz)
+1. [Arduino MKR 1000 Fritzing Part](http://forum.fritzing.org/uploads/default/original/2X/4/4b1a613c74f767e53dbd82fd8be1ea16f0981033.fzpz)
   * Or read [this thread](http://forum.fritzing.org/t/mkr1000-fritzing-part/1408/11), we used the version from the final post
-3. [Arduino IDE](https://www.arduino.cc/en/Main/Software)
-4. [Blynk initial setup code](https://github.com/blynkkk/blynk-library/blob/master/examples/Widgets/LED/LED_Blink/LED_Blink.ino)
-5. [Blynk integration with Tasker](https://community.blynk.cc/t/tutorial-blynk-and-tasker/5063)
+2. [Arduino IDE](https://www.arduino.cc/en/Main/Software)
+3. [Blynk initial setup code](https://github.com/blynkkk/blynk-library/blob/master/examples/Widgets/LED/LED_Blink/LED_Blink.ino)
+4. [Blynk integration with Tasker](https://community.blynk.cc/t/tutorial-blynk-and-tasker/5063)
