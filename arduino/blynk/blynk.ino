@@ -43,29 +43,31 @@ char ssid[] = "krustyt";
 char pass[] = "krabpizza";
 
 Servo servo;
+//Servo servo2;
 int ledCount = 4;
 
 // Takes a pin
-void servoCMD (int pin) {
+void servoCMD (int pin, int pos) {
   int count = 0;
   Serial.print(pin);
 
   servo.attach(pin);
   int toggle = servo.read();
-  servo.detach();
+  //servo.detach();
 
-  if (toggle == 0) {  // Servo Up
+  if (toggle <= 0) {  // Servo Up
   SerialUSB.println("Servo moved to standing position");
 
   // Band-aid fix to Servo for some reason needing same command twice
   // Even as a bandaid fix, this should really be a function for DRY code.
     while(count < 2) {
-      servo.attach(pin); // Connect Servo pin 10
-      delay(400);          // Wait a bit
-      servo.write(130);  // Servo rotates to up position 
-      servo.detach();   // Take a nap, servo. We wouldn't want you to overheat for a model.
+      //servo.attach(pin); // Connect Servo pin 10
+      
+      servo.write(pos);  // Servo rotates to up position 
+      //servo.detach();   // Take a nap, servo. We wouldn't want you to overheat for a model.
 
       count = count +1;
+      delay(400);          // Wait a bit
     }
   }
   else {  // Servo Down
@@ -73,14 +75,16 @@ void servoCMD (int pin) {
 
     // Band-aid fix to Servo for some reason needing same command twice
     while(count < 2) {   
-      servo.attach(10); // Repeat above but inverse position
-      delay(400);
+      //servo.attach(pin); // Repeat above but inverse position
+      
       servo.write(0);
-      servo.detach();
+     // servo.detach();
 
       count = count +1;
+      delay(400);
     }
   }
+  servo.detach();
 }
 
 /*
@@ -141,9 +145,13 @@ BLYNK_WRITE(V0) {  // Servos
   int count = 0;
   switch (param.asInt())
   {
-    case 1: // Servo Pin 10 (#1)
-      servoCMD(10);
-      break;
+    case 1: // Servo Pin 10 (#1, Storage)
+      servoCMD(10, 130);
+    break;
+    case 2: // Servo Pin 6 (#2, #3 wired to the same control pin, Kitchen)
+      // As it turns out, don't call two servoCMD's or they'll hate you forever.
+      servoCMD(6, 130);
+    break;
     default:
        SerialUSB.println("Unknown item selected");
     break;
@@ -198,7 +206,7 @@ void setup()
   // You can also specify server:
   //Blynk.begin(auth, ssid, pass, "blynk-cloud.com", 8442);
   //Blynk.begin(auth, ssid, pass, IPAddress(192,168,1,100), 8442);
-
+  servo.detach();
   pinMode(7, OUTPUT);
 }
 
