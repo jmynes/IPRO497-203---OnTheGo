@@ -198,6 +198,18 @@ BLYNK_WRITE(V1) {  // LEDS
   }
 }
 
+BLYNK_WRITE(V2) {  // SERVO BUTTONS!
+ switch (param.asInt())
+  {
+    case 1:
+      servoCMD(6, 130);
+    break;
+    default:
+      SerialUSB.println("Unknown item selected");
+    break;
+  }
+}
+
 void setup()
 {
   // Debug console
