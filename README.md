@@ -1,5 +1,8 @@
 # OnTheGo(OTG) - Control Panel for Modular Home
 
+## Want to graphically see our project from start to finish?
+![Click here](https://imgur.com/a/brNa5Qn) for an imgur gallery of OTG living
+
 ## Team
 ### Illinois Institute of Technology
 #### IPRO 497-203 Robotics Independent Projects
