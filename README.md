@@ -10,7 +10,7 @@
 4. James "Tucker" Arnold  
 
 ## Diagrams and Screenshots
-![Fritzing Diagram](https://raw.githubusercontent.com/jmynes/IPRO497-203---OnTheGo/master/pics-and-screenshots/fritzing-diagram.png)
+![Fritzing Diagram](https://raw.githubusercontent.com/jmynes/IPRO497-203---OnTheGo/master/pics-and-screenshots/wifi-servo-and-lights-fritzing.png)
 ![Mobile Mockup](https://raw.githubusercontent.com/jmynes/IPRO497-203---OnTheGo/master/pics-and-screenshots/mobile-app-mockup.png)
 
 ## Tech Specs
